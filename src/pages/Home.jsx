@@ -230,7 +230,7 @@ class Home extends Component{
                                     <span className="text-muted">Orders</span>
                                     <span className="text-muted fw-bold"> 576</span>
                                 </div>
-                                <div className="progress mb-2" style={{height: "7px;"}}>
+                                <div className="progress mb-2" style={{height: "7px"}}>
                                     <div className="progress-bar bg-info" role="progressbar" style={{"width": "65%"}} aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="65%"></div>
                                 </div>
                             </div>
@@ -347,7 +347,7 @@ class Home extends Component{
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td colspan="2">Larry the Bird</td>
+                                        <td colSpan="2">Larry the Bird</td>
                                         <td>@twitter</td>
                                     </tr>
                                 </tbody>
