@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import $ from 'jquery';
+import 'jquery.scrollbar';
 
 import User from './user/User';
 import Nav from './nav/Nav';
@@ -36,6 +38,10 @@ class Sidebar extends Component{
                 </Div>
             </Div>
         );
+    }
+
+    componentDidMount(){
+        $('.scrollbar-inner').scrollbar();
     }
 }
 

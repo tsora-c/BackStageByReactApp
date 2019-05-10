@@ -1,47 +1,55 @@
 import React from 'react';
 import $ from 'jquery'
+import 'bootstrap4-notify';
 
-export default class Notifications extends React.Component{
-    constructor(props){
+export default class Notifications extends React.Component {
+    constructor(props) {
         super(props);
-        this.state={}
+        this.state = {
+            notify: {
+                icon: "",
+                type: "success",
+                vertial: "bottom",
+                align: "left"
+            }
+        }
     }
 
-    render(){
-        return(
-            <div class="container-fluid">
-                <h4 class="page-title">Notifications</h4>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title">Bootstrap Notify</div>
-                                <div class="card-category">Turn standard bootstrap alerts into "growl" like notifications from <a class="link" href="http://bootstrap-notify.remabledesigns.com/">Bootstrap Notify</a></div>
+    render() {
+        return (
+            <div className="container-fluid">
+                <h4 className="page-title">Notifications</h4>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="card">
+                            <div className="card-header">
+                                <div className="card-title">Bootstrap Notify</div>
+                                <div className="card-category">Turn standard bootstrap alerts into "growl" like notifications from <a className="link" href="http://bootstrap-notify.remabledesigns.com/">Bootstrap Notify</a></div>
                             </div>
-                            <div class="card-body">
-                                <div class="form">
-                                    <div class="form-group from-show-notify row">
-                                        <div class="col-lg-3 col-md-3 col-sm-12 text-right">
+                            <div className="card-body">
+                                <div className="form">
+                                    <div className="form-group from-show-notify row">
+                                        <div className="col-lg-3 col-md-3 col-sm-12 text-right">
                                             <label>Placement :</label>
                                         </div>
-                                        <div class="col-lg-4 col-md-9 col-sm-12">
-                                            <select class="form-control input-fixed" id="notify_placement_from">
+                                        <div className="col-lg-4 col-md-9 col-sm-12">
+                                            <select className="form-control input-fixed" defaultValue={this.state.notify.vertial} id="notify_placement_from" onChange={this.handleSelectChange.bind(this,"vertial")}>
                                                 <option value="top">Top</option>
                                                 <option value="bottom">Bottom</option>
                                             </select>
-                                            <select class="form-control input-fixed" id="notify_placement_align">
+                                            <select className="form-control input-fixed" id="notify_placement_align" onChange={this.handleSelectChange.bind(this,"align")}>
                                                 <option value="left">Left</option>
-                                                <option value="right" selected="">Right</option>
+                                                <option value="right">Right</option>
                                                 <option value="center">Center</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group from-show-notify row">
-                                        <div class="col-lg-3 col-md-3 col-sm-12 text-right">
+                                    <div className="form-group from-show-notify row">
+                                        <div className="col-lg-3 col-md-3 col-sm-12 text-right">
                                             <label>State :</label>
                                         </div>
-                                        <div class="col-lg-4 col-md-9 col-sm-12">
-                                            <select class="form-control input-fixed" id="notify_state">
+                                        <div className="col-lg-4 col-md-9 col-sm-12">
+                                            <select className="form-control input-fixed" id="notify_state" onChange={this.handleSelectChange.bind(this,"type")}>
                                                 <option value="primary">Primary</option>
                                                 <option value="info">Info</option>
                                                 <option value="success">Success</option>
@@ -50,12 +58,12 @@ export default class Notifications extends React.Component{
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group from-show-notify row">
-                                        <div class="col-lg-3 col-md-3 col-sm-12 text-right">
+                                    <div className="form-group from-show-notify row">
+                                        <div className="col-lg-3 col-md-3 col-sm-12 text-right">
                                             <label>Style :</label>
                                         </div>
-                                        <div class="col-lg-4 col-md-9 col-sm-12">
-                                            <select class="form-control input-fixed" id="notify_style">
+                                        <div className="col-lg-4 col-md-9 col-sm-12">
+                                            <select className="form-control input-fixed" id="notify_style" onChange={this.handleSelectChange.bind(this,"icon")}>
                                                 <option value="plain">Plain</option>
                                                 <option value="withicon">With Icon</option>
                                             </select>
@@ -63,14 +71,14 @@ export default class Notifications extends React.Component{
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <div class="form">
-                                    <div class="form-group from-show-notify row">
-                                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div className="card-footer">
+                                <div className="form">
+                                    <div className="form-group from-show-notify row">
+                                        <div className="col-lg-3 col-md-3 col-sm-12">
 
                                         </div>
-                                        <div class="col-lg-4 col-md-9 col-sm-12">
-                                            <button id="displayNotif" class="btn btn-success">Display</button>
+                                        <div className="col-lg-4 col-md-9 col-sm-12">
+                                            <button id="displayNotif" className="btn btn-success" onClick={this.alertNotify}>Display</button>
                                         </div>
                                     </div>
                                 </div>
@@ -82,7 +90,42 @@ export default class Notifications extends React.Component{
         )
     }
 
-    componentDidMount(){
+    componentDidMount() {
         $("[tag-role='Sidebar-Nav-Ul']>li").eq(4).addClass("active")
+    }
+
+    handleSelectChange=(key,event)=>{
+        console.log(key,event);
+        console.log(event.target.value);
+        console.log(this.state.notify);
+        var notify=this.state.notify;
+        notify[key]=event.target.value;
+        if(key==="icon"){
+            if(event.target.value==="plain"){
+                notify.icon="";
+            }else if(event.target.value==="withicon"){
+                notify.icon="la la-bell";
+
+            }
+        }
+        this.setState({
+            notify:notify
+        })
+    }
+
+    alertNotify=()=>{
+        console.log(this);
+        $.notify({
+            icon: this.state.notify.icon,
+            title: 'Bootstrap notify',
+            message: 'Turning standard Bootstrap alerts into "notify" like notifications',
+        }, {
+                type: this.state.notify.type,
+                placement: {
+                    from: this.state.notify.vertial,
+                    align: this.state.notify.align
+                },
+                time: 1000,
+            });
     }
 }
