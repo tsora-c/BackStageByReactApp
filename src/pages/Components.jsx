@@ -206,10 +206,10 @@ export default class Components extends React.Component{
 
                                         <ul className="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
 
-                                            <a className="dropdown-item" href="#">Action</a>
-                                            <a className="dropdown-item" href="#">Another action</a>
+                                            <a className="dropdown-item" href="#1">Action</a>
+                                            <a className="dropdown-item" href="#1">Another action</a>
                                             <p className="dropdown-divider"></p>
-                                            <a className="dropdown-item" href="#">Something else here</a>
+                                            <a className="dropdown-item" href="#1">Something else here</a>
                                         </ul>
 
                                     </div>
@@ -312,16 +312,16 @@ export default class Components extends React.Component{
                             <div className="card-body">
                                 <ul className="nav nav-pills nav-primary">
                                     <li className="nav-item">
-                                        <a className="nav-link active" href="#">Active</a>
+                                        <a className="nav-link active" href="#1">Active</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#">Link</a>
+                                        <a className="nav-link" href="#1">Link</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#">Link</a>
+                                        <a className="nav-link" href="#1">Link</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link disabled" href="#">Disabled</a>
+                                        <a className="nav-link disabled" href="#1">Disabled</a>
                                     </li>
                                 </ul>
                             </div>
@@ -337,16 +337,16 @@ export default class Components extends React.Component{
                                 <p className="demo">
                                     <ul className="pagination pg-primary">
                                         <li className="page-item">
-                                            <a className="page-link" href="#" aria-label="Previous">
+                                            <a className="page-link" href="#1" aria-label="Previous">
                                                 <span aria-hidden="true">&laquo;</span>
                                                 <span className="sr-only">Previous</span>
                                             </a>
                                         </li>
-                                        <li className="page-item active"><a className="page-link" href="#">1</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">2</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">3</a></li>
+                                        <li className="page-item active"><a className="page-link" href="#1">1</a></li>
+                                        <li className="page-item"><a className="page-link" href="#1">2</a></li>
+                                        <li className="page-item"><a className="page-link" href="#1">3</a></li>
                                         <li className="page-item">
-                                            <a className="page-link" href="#" aria-label="Next">
+                                            <a className="page-link" href="#1" aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>
                                                 <span className="sr-only">Next</span>
                                             </a>
